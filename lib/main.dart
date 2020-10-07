@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'MY FIRST FLUTTER'),
     );
   }
 }
@@ -51,6 +51,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  final String _image =
+      'https://venturebeat.com/wp-content/uploads/2019/02/google-flutter-logo-white.png?fit=400%2C200&strip=all';
 
   void _incrementCounter() {
     setState(() {
@@ -61,47 +63,78 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: new Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            new Icon(Icons.insert_emoticon,
-                color: const Color(0xFF000000), size: 65.0),
-            Column(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
+        body: Padding(
+          padding: EdgeInsets.all(40.0),
+          child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                new Text(
-                  "Daniel Nguyen",
-                  textAlign: TextAlign.left,
-                  style: new TextStyle(
-                      // backgroundColor: const Color(0xFF0FFF00),
-                      fontSize: 26.0,
-                      color: const Color(0xFF000000),
-                      fontWeight: FontWeight.w900,
-                      fontFamily: "Roboto"),
+                Container(height: 100.0, child: Image.network(_image)),
+                Container(
+                  child:
+                      Text('Welcome to MFF', style: TextStyle(fontSize: 30.0)),
                 ),
-                new Text(
-                  "qWerty1",
-                  style: new TextStyle(
-                      // backgroundColor: const Color(0xFF0F00FF),
-                      fontSize: 12.0,
-                      color: const Color(0xFF000000),
-                      fontFamily: "Roboto"),
+                Container(
+                  child: Text('Login',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 30.0)),
                 ),
-              ],
-            )
-          ]),
-
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+                Container(
+                  margin: EdgeInsets.only(top: 60.0),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: '',
+                      labelText: 'Username',
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 5.0),
+                  child: TextField(
+                    decoration:
+                        InputDecoration(hintText: '', labelText: 'Password'),
+                  ),
+                ),
+                Container(
+                    margin: EdgeInsets.only(top: 40.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        print('Login was tapped!');
+                      },
+                      child: Container(
+                        height: 50.0,
+                        color: Color.fromRGBO(105, 175, 247, 1),
+                        child: Center(
+                          child: Text(
+                            'Login',
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 20.0),
+                          ),
+                        ),
+                      ),
+                    )),
+                Container(
+                    margin: EdgeInsets.only(top: 10.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        print('ForgotPassword? was tapped!');
+                      },
+                      child: Container(
+                        height: 15.0,
+                        child: Center(
+                          child: Text(
+                            'Forgot Password?',
+                            style:
+                                TextStyle(color: Colors.black, fontSize: 15.0),
+                          ),
+                        ),
+                      ),
+                    ))
+              ]),
+        ));
   }
 }
