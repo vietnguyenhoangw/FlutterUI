@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -70,7 +71,22 @@ class LoginScreenState extends State<LoginScreen> {
                       margin: EdgeInsets.only(top: 40.0),
                       child: GestureDetector(
                         onTap: () {
-                          print('Login was tapped!');
+                          Alert(
+                            context: context,
+                            title: "Messages",
+                            desc: "Login button clicked",
+                            buttons: [
+                              DialogButton(
+                                child: Text(
+                                  "OK",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 18),
+                                ),
+                                onPressed: () => Navigator.pop(context),
+                                width: 120,
+                              )
+                            ],
+                          ).show();
                         },
                         child: Container(
                           height: 50.0,
@@ -88,7 +104,22 @@ class LoginScreenState extends State<LoginScreen> {
                       margin: EdgeInsets.only(top: 10.0),
                       child: GestureDetector(
                         onTap: () {
-                          print('ForgotPassword? was tapped!');
+                          Alert(
+                            context: context,
+                            title: "Messages",
+                            desc: "ForgotPassword button clicked",
+                            buttons: [
+                              DialogButton(
+                                child: Text(
+                                  "OK",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 18),
+                                ),
+                                onPressed: () => Navigator.pop(context),
+                                width: 120,
+                              )
+                            ],
+                          ).show();
                         },
                         child: Container(
                           height: 15.0,
